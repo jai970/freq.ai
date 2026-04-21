@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: "Inter Tight", var(--font-sans);
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --color-primary: #22D3EE;
+    --color-primary-foreground: #000;
+    
+    --color-background: #000;
+    --color-foreground: #fff;
+
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-input: rgba(255, 255, 255, 0.1);
+    --color-ring: #22D3EE;
+    
+    --radius-lg: 0.75rem;
+    --radius-md: 0.5rem;
+    --radius-sm: 0.25rem;
+}
+
+:root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --primary: 187 82% 54%; /* #22D3EE */
+    --primary-foreground: 0 0% 0%;
+    --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground selection:bg-primary selection:text-primary-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  html {
+    @apply font-sans scroll-smooth;
+  }
+}
+
+/* Grain Noise Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Bioluminescent Cyan glow */
+.cyan-glow {
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+}
+
+.cyan-glow:hover {
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.4);
+}
+
+/* Hairline gradient separator */
+.hairline-gradient {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+/* Glass panel */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
